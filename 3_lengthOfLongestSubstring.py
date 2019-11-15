@@ -1,4 +1,5 @@
 class Solution(object):
+    # 其实这道题我卡了很久，原因是不知道python从i+1的地方遍历，然后就想到用while的方式，每次for循环一次，就把上一次循环过的字符删掉
     def lengthOfLongestSubstring(self, s):
         """
         :type s: str
