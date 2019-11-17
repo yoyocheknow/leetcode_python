@@ -60,5 +60,5 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-    r = Solution().longestPalindrome1('annnabbbb')
+    r = Solution().longestPalindrome1('aba')
     print r
