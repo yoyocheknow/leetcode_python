@@ -124,5 +124,5 @@ class Solution(object):
         return dp(0, 0)
 
 if __name__ == "__main__":
-    r = Solution().isMatch1('aac', 'a*c')
+    r = Solution().isMatch1('aa', 'a*')
     print r
