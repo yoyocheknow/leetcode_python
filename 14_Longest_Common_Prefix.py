@@ -22,7 +22,7 @@ class Solution(object):
                 prefix = strs[0][:min_length]
                 if prefix != strs[i][:min_length]:
                     min_length -= 1
-                    prefix=''
+                    prefix = ''
                     break
                 else:
                     if i == len(strs)-1:
