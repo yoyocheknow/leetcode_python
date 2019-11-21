@@ -34,7 +34,7 @@ class Solution(object):
                 # 向左移动j
                 k=j-1
                 while(height[k]<=height[j] and i <k):
-                    k -=1
+                    k -= 1
                 j=k
         return max_area
 
