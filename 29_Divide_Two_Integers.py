@@ -26,8 +26,12 @@ class Solution(object):
                 dividend = temp
             else:
                 times -= 1
+        result = q * toggle
+        if result >int_max:
+            return int_max
+        else:
+            return result
 
-        return max(int_min, min(q * toggle, int_max))
 if __name__ == "__main__":
-    r = Solution().divide(100,2)
+    r = Solution().divide(-2147483648,1)
     print r
