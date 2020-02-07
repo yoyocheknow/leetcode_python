@@ -46,7 +46,7 @@ if __name__ == "__main__":
     L3.next = L4
     L4.next = L5
 
-    r = Solution().reverseList1(L1)
+    r = Solution().reverseList(L1)
     while(r):
         print r.val
         r=r.next
