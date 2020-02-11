@@ -48,7 +48,6 @@ class Solution(object):
         root.right = self.buildTree(preorder[i:], inorder[i + 1:])
         return root
 
-
 if __name__ == "__main__":
     preorder = [3, 9, 20, 15, 7]
     inorder = [9, 3, 15, 20, 7]
