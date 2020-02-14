@@ -17,7 +17,7 @@ class Solution(object):
             if len(res)==g:
                 break
             if tank-consume+gas[j]<cost[j]:
-                #中间有一个点到达不了，则情况结果集合
+                #中间有一个点到达不了，则清空结果集合
                 res=[]
                 consume=0
                 tank=0
@@ -25,7 +25,6 @@ class Solution(object):
                 i+=1
                 if i==g:
                     break
-            # 说明找到一个起点，重新开始计数
             else:
                 #记录起点
                 res.append(j)
