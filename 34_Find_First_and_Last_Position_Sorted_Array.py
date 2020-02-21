@@ -41,7 +41,41 @@ class Solution(object):
             res_list.append(-1)
         return res_list
 
+    def searchRange2(self, nums, target):
+
+        def left_bound(start,end):
+            while(start<=end):
+                mid=(start+end)/2
+                if nums[mid]==target:
+                    if mid==0 or nums[mid-1]<target:
+                        return mid
+                    end=mid-1
+                elif nums[mid]<target:
+                    start=mid+1
+                else:
+                    end=mid-1
+            return -1
+
+        def right_bound(start,end):
+            while(start<=end):
+                mid=(start+end)/2
+                if nums[mid]==target:
+                    if mid==len(nums)-1 or nums[mid+1]>target:
+                        return mid
+                    start = mid + 1
+                elif nums[mid]<target:
+                    start=mid+1
+                else:
+                    end=mid-1
+            return -1
+
+        res=[]
+        left=left_bound(0,len(nums))
+        right=right_bound(0,len(nums))
+        res.append(left)
+        res.append(right)
+        return res
 
 if __name__ == "__main__":
-    r = Solution().searchRange([5,7,7,8,8,8,8,10],10)
+    r = Solution().searchRange2([5,7,7,8,8,8,8,10],8)
     print r
