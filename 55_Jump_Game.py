@@ -26,6 +26,21 @@ class Solution(object):
                 return True
         return False
 
+    # 贪心算法
+    def canJump2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        jump=0
+        max_index=nums[0]
+        while(jump<len(nums) and jump<=max_index):
+            max_index = max(max_index,nums[jump]+jump)
+            jump+=1
+        if max_index>=len(nums)-1:
+            return True
+        else:
+            return False
 if __name__ == "__main__":
-    r = Solution().canJump([1,2])
+    r = Solution().canJump2([1,2,3])
     print r
