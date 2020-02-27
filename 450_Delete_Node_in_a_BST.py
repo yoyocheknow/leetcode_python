@@ -73,6 +73,27 @@ class Solution(object):
             else:
                 self.parent.right=None
 
+    def deleteNode2(self, root, key):
+        """
+        :type root: TreeNode
+        :type key: int
+        :rtype: TreeNode
+        """
+        return self.dfs(root, key, None)
+
+    def dfs(self, node, key, l):
+        if not node:
+            node = l  # l is the left of target node. if we cannot find target node, l is None.
+            return node
+        if node.val == key:
+            l = node.left  #
+            return self.dfs(node.right, key, l)  # we delete node and return node.right
+        if node.val < key:
+            node.right = self.dfs(node.right, key, l)
+            return node
+        if node.val > key:
+            node.left = self.dfs(node.left, key, l)
+            return node
 
 if __name__ == "__main__":
     node1 = TreeNode(5)
@@ -86,5 +107,5 @@ if __name__ == "__main__":
     node2.left = node4
     node2.right=node5
     node3.right=node6
-    r = Solution().deleteNode(node1,3)
+    r = Solution().deleteNode2(node1,3)
     print r
