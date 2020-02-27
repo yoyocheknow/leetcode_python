@@ -17,8 +17,26 @@ class Solution(object):
             # output += [curr + [num] for curr in output]
 
         return output
+
+    # 回溯
+    def subsets1(self,nums):
+        output = []
+        item = []
+        output.append(item)
+
+        def backTrack(i, item):
+            if i >= len(nums):
+                return
+            item.append(nums[i])
+            output.append(item)
+            backTrack(i + 1, item[:])
+
+            backTrack(i + 1, item[:-1])
+
+        backTrack(0, [])
+        return output
     #回溯
-    def subsets1(self, nums):
+    def subsets2(self, nums):
         def backtrack(first=0, curr=[]):
             # if the combination is done
             if len(curr) == k:
@@ -36,6 +54,7 @@ class Solution(object):
         for k in range(n + 1):
             backtrack()
         return output
+
     #二进制法
     def subsets3(self, nums):
         n = len(nums)
@@ -51,5 +70,5 @@ class Solution(object):
         return output
 
 if __name__ == "__main__":
-    r = Solution().subsets3([1,2,3])
+    r = Solution().subsets1([1,2,3])
     print r
