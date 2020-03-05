@@ -51,7 +51,7 @@ class Solution(object):
 
         # Empty s and Empty p
         dp[0][0]=1
-        #下面是标记情况
+        #下面是边界情况
         # empty p
         for i in range(1,len(dp)):
             dp[i][0]=0
