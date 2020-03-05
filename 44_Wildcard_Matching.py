@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 class Solution(object):
-
+    # 此方法用到了递归，会超时
     def isMatch(self, s, p):
         """
         :type s: str
@@ -42,6 +42,36 @@ class Solution(object):
             dp[sp][pp]=0
 
         return dp[sp][pp]
+
+    def isMatch2(self, s, p):
+        s_length = len(s)
+        p_length = len(p)
+        # dp[i][j]表示s[0...i],p[0...j]匹配
+        dp = [[-1 for col in range(p_length + 1)] for row in range(s_length + 1)]
+
+        # Empty s and Empty p
+        dp[0][0]=1
+        #下面是标记情况
+        # empty p
+        for i in range(1,len(dp)):
+            dp[i][0]=0
+        # empty s
+        for i in range(1,len(dp[0])):
+            if p[i-1]=='*':
+                dp[0][i]=dp[0][i-1]
+            else:
+                dp[0][i]=0
+        #状态转移方程
+        for i in range(1,len(dp)):
+            for j in range(1,len(dp[0])):
+                if s[i-1]==p[j-1] or p[j-1]=='?':
+                    dp[i][j]=dp[i-1][j-1]
+                elif p[j-1]=='*':
+                    #p[j-1]='*'的话，可以作为任意字符匹配，也可以作为空匹配
+                    dp[i][j]=dp[i][j-1]|dp[i-1][j]|dp[i-1][j-1]
+                elif s[i-1]!=p[j-1]:
+                    dp[i][j]=0
+        return dp[s_length][p_length]==1
 if __name__ == "__main__":
-    r = Solution().isMatch('abceb','*a*b')
+    r = Solution().isMatch2('aa','*')
     print r
